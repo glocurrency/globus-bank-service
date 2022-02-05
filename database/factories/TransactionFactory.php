@@ -1,8 +1,9 @@
 <?php
 
-namespace Database\Factories\GlobusBank;
+namespace GloCurrency\GlobusBank\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use GloCurrency\GlobusBank\Models\Transaction;
 use GloCurrency\GlobusBank\GlobusBank;
 use GloCurrency\GlobusBank\Enums\TransactionStateCodeEnum;
 use BrokeYourBike\GlobusBank\Enums\PaymentTypeEnum;

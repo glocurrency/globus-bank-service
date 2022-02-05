@@ -9,6 +9,7 @@ use GloCurrency\GlobusBank\GlobusBank;
 use GloCurrency\GlobusBank\Events\TransactionUpdatedEvent;
 use GloCurrency\GlobusBank\Events\TransactionCreatedEvent;
 use GloCurrency\GlobusBank\Enums\TransactionStateCodeEnum;
+use GloCurrency\GlobusBank\Database\Factories\TransactionFactory;
 use BrokeYourBike\HasSourceModel\SourceModelInterface;
 use BrokeYourBike\GlobusBank\Interfaces\TransactionInterface;
 use BrokeYourBike\GlobusBank\Enums\PaymentTypeEnum;
@@ -127,5 +128,15 @@ class Transaction extends BaseUuid implements MModelWithStateCodeInterface, Sour
     public function processingItem()
     {
         return $this->belongsTo(GlobusBank::$processingItemModel, 'processing_item_id', 'id');
+    }
+
+    /**
+     * Create a new factory instance for the model.
+     *
+     * @return \Illuminate\Database\Eloquent\Factories\Factory
+     */
+    protected static function newFactory()
+    {
+        return TransactionFactory::new();
     }
 }

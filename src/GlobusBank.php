@@ -2,7 +2,7 @@
 
 namespace GloCurrency\GlobusBank;
 
-class GlobusBank
+final class GlobusBank
 {
     /**
      * Indicates if GlobusBank migrations will be run.

@@ -38,8 +38,8 @@ class CreateGlobusTransactionsTable extends Migration
             $table->timestamps(6);
             $table->softDeletes('deleted_at', 6);
 
-            $table->foreign('transaction_id')->references('id')->on('transactions');
-            $table->foreign('processing_item_id')->references('id')->on('processing_items');
+            // $table->foreign('transaction_id')->references('id')->on('transactions');
+            // $table->foreign('processing_item_id')->references('id')->on('processing_items');
         });
     }
 
