@@ -34,7 +34,7 @@ final class FetchTransactionUpdateException extends \RuntimeException
     public static function stateNotAllowed(Transaction $transaction): self
     {
         $className = $transaction::class;
-        $message = "{$className} state_code `{$transaction->state_code->value}` not allowed";
+        $message = "{$className} state_code `{$transaction->getStateCode()->value}` not allowed";
         return new static(TransactionStateCodeEnum::STATE_NOT_ALLOWED, $message);
     }
 

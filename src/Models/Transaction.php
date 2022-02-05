@@ -4,7 +4,8 @@ namespace GloCurrency\GlobusBank\Models;
 
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use GloCurrency\MiddlewareBlocks\Contracts\ModelWithStateCodeInterface;
+use GloCurrency\MiddlewareBlocks\Contracts\ModelWithStateCodeInterface as MModelWithStateCodeInterface;
+use GloCurrency\GlobusBank\GlobusBank;
 use GloCurrency\GlobusBank\Events\TransactionUpdatedEvent;
 use GloCurrency\GlobusBank\Events\TransactionCreatedEvent;
 use GloCurrency\GlobusBank\Enums\TransactionStateCodeEnum;
@@ -41,7 +42,7 @@ use BrokeYourBike\BaseModels\BaseUuid;
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property \Illuminate\Support\Carbon|null $deleted_at
  */
-class Transaction extends BaseUuid implements ModelWithStateCodeInterface, SourceModelInterface, TransactionInterface
+class Transaction extends BaseUuid implements MModelWithStateCodeInterface, SourceModelInterface, TransactionInterface
 {
     use HasFactory;
     use SoftDeletes;
@@ -116,5 +117,15 @@ class Transaction extends BaseUuid implements ModelWithStateCodeInterface, Sourc
     public function getValueDate(): \DateTimeInterface
     {
         return $this->created_at ?? now();
+    }
+
+    /**
+     * The ProcessingItem that Transaction belongs to.
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function processingItem()
+    {
+        return $this->belongsTo(GlobusBank::$processingItemModel, 'processing_item_id', 'id');
     }
 }

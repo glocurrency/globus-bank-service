@@ -5,10 +5,10 @@ namespace GloCurrency\GlobusBank\Events;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
-use GloCurrency\MiddlewareBlocks\Contracts\ModelEventInterface;
+use GloCurrency\MiddlewareBlocks\Contracts\ModelEventInterface as MModelEventInterface;
 use GloCurrency\GlobusBank\Models\Transaction;
 
-abstract class TransactionEvent implements ModelEventInterface
+abstract class TransactionEvent implements MModelEventInterface
 {
     use Dispatchable;
     use InteractsWithSockets;

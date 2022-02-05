@@ -10,3 +10,8 @@ parameters:
 			count: 1
 			path: src/Jobs/CreateTransactionJob.php
 
+		-
+			message: "#^Access to an undefined property GloCurrency\\\\GlobusBank\\\\Models\\\\Transaction\\:\\:\\$processingItem\\.$#"
+			count: 1
+			path: src/Listeners/UpdateProcessingItemStateSubscriber.php
+
