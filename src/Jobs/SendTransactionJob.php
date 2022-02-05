@@ -2,6 +2,7 @@
 
 namespace GloCurrency\GlobusBank\Jobs;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -68,7 +69,7 @@ class SendTransactionJob implements ShouldQueue, ShouldBeUnique, ShouldBeEncrypt
 
         try {
             /** @var Client */
-            $api = app()->make(Client::class);
+            $api = App::make(Client::class);
             $response = $api->makeLocalPayment($this->targetTransaction);
         } catch (\Throwable $e) {
             report($e);

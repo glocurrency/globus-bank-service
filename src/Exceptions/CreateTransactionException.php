@@ -34,7 +34,7 @@ final class CreateTransactionException extends \RuntimeException
     public static function noTransaction(MProcessingItemInterface $processingItem): self
     {
         $className = MTransactionInterface::class;
-        $message = "{$className} `{$processingItem->transaction_id}` not found";
+        $message = "{$className} `{$processingItem->getId()}` transaction not found";
         return new static(MProcessingItemStateCodeEnum::NO_TRANSACTION, $message);
     }
 
@@ -55,35 +55,35 @@ final class CreateTransactionException extends \RuntimeException
     public static function duplicateTargetTransaction(Transaction $transaction): self
     {
         $className = $transaction::class;
-        $message = "{$className} cannot be created twice, `{$transaction->getKey()}`";
+        $message = "{$className} cannot be created twice, `{$transaction->id}`";
         return new static(MProcessingItemStateCodeEnum::DUPLICATE_TARGET_TRANSACTION, $message);
     }
 
     public static function noTransactionSender(MTransactionInterface $transaction): self
     {
         $className = $transaction::class;
-        $message = "{$className} `{$transaction->transaction_sender_id}` not found";
+        $message = "{$className} `{$transaction->getId()}` sender not found";
         return new static(MProcessingItemStateCodeEnum::NO_TRANSACTION_SENDER, $message);
     }
 
     public static function noTransactionRecipient(MTransactionInterface $transaction): self
     {
         $className = $transaction::class;
-        $message = "{$className} `{$transaction->transaction_recipient_id}` not found";
+        $message = "{$className} `{$transaction->getId()}` recipient not found";
         return new static(MProcessingItemStateCodeEnum::NO_TRANSACTION_RECIPIENT, $message);
     }
 
     public static function noBankCode(MRecipientInterface $transactionRecipient): self
     {
         $className = $transactionRecipient::class;
-        $message = "{$className} `{$transactionRecipient->id}` has no `bank_code`";
+        $message = "{$className} `{$transactionRecipient->getId()}` has no `bank_code`";
         return new static(MProcessingItemStateCodeEnum::NO_TRANSACTION_RECIPIENT_BANK_CODE, $message);
     }
 
     public static function noBankAccount(MRecipientInterface $transactionRecipient): self
     {
         $className = $transactionRecipient::class;
-        $message = "{$className} `{$transactionRecipient->id}` has no `bank_account`";
+        $message = "{$className} `{$transactionRecipient->getId()}` has no `bank_account`";
         return new static(MProcessingItemStateCodeEnum::NO_TRANSACTION_RECIPIENT_BANK_ACCOUNT, $message);
     }
 }

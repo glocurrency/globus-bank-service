@@ -3,6 +3,7 @@
 namespace GloCurrency\GlobusBank\Jobs;
 
 use Money\Formatter\DecimalMoneyFormatter;
+use Illuminate\Support\Facades\App;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -84,7 +85,7 @@ class CreateTransactionJob implements ShouldQueue, ShouldBeUnique, ShouldBeEncry
         }
 
         /** @var Transaction|null */
-        $targetTransaction = Transaction::firstWhere('transaction_id', $transaction->id);
+        $targetTransaction = Transaction::firstWhere('transaction_id', $transaction->getId());
 
         if ($targetTransaction) {
             throw CreateTransactionException::duplicateTargetTransaction($targetTransaction);
@@ -113,7 +114,7 @@ class CreateTransactionJob implements ShouldQueue, ShouldBeUnique, ShouldBeEncry
         }
 
         /** @var DecimalMoneyFormatter $moneyFormatter */
-        $moneyFormatter = app()->make(DecimalMoneyFormatter::class);
+        $moneyFormatter = App::make(DecimalMoneyFormatter::class);
 
         Transaction::create([
             'transaction_id' => $transaction->getId(),

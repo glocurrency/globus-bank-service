@@ -1,0 +1,12 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Call to an undefined static method GloCurrency\\\\GlobusBank\\\\Models\\\\Transaction\\:\\:create\\(\\)\\.$#"
+			count: 1
+			path: src/Jobs/CreateTransactionJob.php
+
+		-
+			message: "#^Call to an undefined static method GloCurrency\\\\GlobusBank\\\\Models\\\\Transaction\\:\\:firstWhere\\(\\)\\.$#"
+			count: 1
+			path: src/Jobs/CreateTransactionJob.php
+

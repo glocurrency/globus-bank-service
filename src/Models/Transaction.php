@@ -2,6 +2,7 @@
 
 namespace GloCurrency\GlobusBank\Models;
 
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use GloCurrency\MiddlewareBlocks\Contracts\ModelWithStateCodeInterface;
 use GloCurrency\GlobusBank\Events\TransactionUpdatedEvent;
@@ -15,9 +16,35 @@ use BrokeYourBike\GlobusBank\Enums\PaymentMethodEnum;
 use BrokeYourBike\GlobusBank\Enums\ErrorCodeEnum;
 use BrokeYourBike\BaseModels\BaseUuid;
 
+/**
+ * GloCurrency\GlobusBank\Models\Transaction
+ *
+ * @property string $id
+ * @property string $transaction_id
+ * @property string $processing_item_id
+ * @property \GloCurrency\GlobusBank\Enums\TransactionStateCodeEnum $state_code
+ * @property string|null $state_code_reason
+ * @property \BrokeYourBike\GlobusBank\Enums\ErrorCodeEnum|null $error_code
+ * @property string|null $error_code_description
+ * @property \BrokeYourBike\GlobusBank\Enums\PaymentStatusEnum|null $status_code
+ * @property string|null $status_code_description
+ * @property string $reference
+ * @property string|null $batch_reference
+ * @property \BrokeYourBike\GlobusBank\Enums\PaymentTypeEnum $payment_type
+ * @property \BrokeYourBike\GlobusBank\Enums\PaymentMethodEnum $payment_method
+ * @property string $recipient_bank_account
+ * @property string $recipient_bank_code
+ * @property string $recipient_name
+ * @property float $amount
+ * @property string $currency_code
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ */
 class Transaction extends BaseUuid implements ModelWithStateCodeInterface, SourceModelInterface, TransactionInterface
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $table = 'globus_transactions';
 
@@ -88,6 +115,6 @@ class Transaction extends BaseUuid implements ModelWithStateCodeInterface, Sourc
 
     public function getValueDate(): \DateTimeInterface
     {
-        return $this->created_at;
+        return $this->created_at ?? now();
     }
 }

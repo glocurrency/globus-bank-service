@@ -2,6 +2,7 @@
 
 namespace GloCurrency\GlobusBank\Jobs;
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
@@ -71,7 +72,8 @@ class FetchTransactionUpdateJob implements ShouldQueue, ShouldBeUnique, ShouldBe
         }
 
         try {
-            $api = app()->make(Client::class);
+            /** @var Client */
+            $api = App::make(Client::class);
             $response = $api->getBatchStatus($this->targetTransaction->batch_reference);
         } catch (\Throwable $e) {
             report($e);
