@@ -3,6 +3,8 @@
 namespace GloCurrency\GlobusBank;
 
 use Illuminate\Support\ServiceProvider;
+use GloCurrency\GlobusBank\Config;
+use BrokeYourBike\GlobusBank\Interfaces\ConfigInterface;
 
 class GlobusBankServiceProvider extends ServiceProvider
 {
@@ -15,6 +17,8 @@ class GlobusBankServiceProvider extends ServiceProvider
     {
         $this->registerMigrations();
         $this->registerCommands();
+
+        $this->app->bind(ConfigInterface::class, Config::class);
     }
 
     /**
