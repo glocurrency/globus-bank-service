@@ -68,8 +68,6 @@ class CreateTransactionJob implements ShouldQueue, ShouldBeUnique, ShouldBeEncry
      */
     public function handle()
     {
-        // TODO: assert processing item state
-
         $transaction = $this->processingItem->getTransaction();
 
         if (!$transaction) {
