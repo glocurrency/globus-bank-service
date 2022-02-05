@@ -1,6 +1,6 @@
 <?php
 
-namespace GloCurrency\GlobusBank\Tests\Models;
+namespace GloCurrency\GlobusBank\Tests\Unit\Models;
 
 use Illuminate\Support\Carbon;
 use GloCurrency\GlobusBank\Tests\TestCase;

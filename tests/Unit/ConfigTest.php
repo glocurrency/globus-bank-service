@@ -1,6 +1,6 @@
 <?php
 
-namespace GloCurrency\GlobusBank\Tests;
+namespace GloCurrency\GlobusBank\Tests\Unit;
 
 use Illuminate\Foundation\Testing\WithFaker;
 use GloCurrency\GlobusBank\Tests\TestCase;

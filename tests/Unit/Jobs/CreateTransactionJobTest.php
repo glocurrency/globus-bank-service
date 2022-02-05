@@ -1,6 +1,6 @@
 <?php
 
-namespace GloCurrency\GlobusBank\Tests\Jobs;
+namespace GloCurrency\GlobusBank\Tests\Unit\Jobs;
 
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldBeEncrypted;

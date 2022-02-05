@@ -1,6 +1,6 @@
 <?php
 
-namespace GloCurrency\GlobusBank\Tests\Enums;
+namespace GloCurrency\GlobusBank\Tests\Unit\Enums;
 
 use GloCurrency\MiddlewareBlocks\Enums\ProcessingItemStateCodeEnum as MProcessingItemStateCodeEnum;
 use GloCurrency\GlobusBank\Tests\TestCase;
