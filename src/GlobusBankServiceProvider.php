@@ -17,8 +17,6 @@ class GlobusBankServiceProvider extends ServiceProvider
     {
         $this->registerMigrations();
         $this->registerCommands();
-
-        $this->app->bind(ConfigInterface::class, Config::class);
     }
 
     /**
@@ -29,6 +27,7 @@ class GlobusBankServiceProvider extends ServiceProvider
     public function register()
     {
         $this->configure();
+        $this->bindConfig();
     }
 
     /**
@@ -41,6 +40,16 @@ class GlobusBankServiceProvider extends ServiceProvider
         $this->mergeConfigFrom(
             __DIR__.'/../config/globus_bank.php', 'services.globus_bank'
         );
+    }
+
+    /**
+     * Bind the GlobusBank logger interface to the GlobusBank logger.
+     *
+     * @return void
+     */
+    protected function bindConfig()
+    {
+        $this->app->bind(ConfigInterface::class, Config::class);
     }
 
     /**
