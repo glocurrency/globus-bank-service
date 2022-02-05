@@ -12,6 +12,8 @@
     ],
     "require": {
         "php": "^8.1",
+        "brokeyourbike/base-models": "^0.3.0",
+        "brokeyourbike/globus-bank-api-client": "^0.3.0",
         "illuminate/contracts": "^8.0|^9.0",
         "illuminate/database": "^8.0|^9.0"
     },
@@ -45,5 +47,12 @@
         }
     },
     "minimum-stability": "stable",
-    "prefer-stable": true
+    "prefer-stable": true,
+    "repositories": {
+        "packagist.org": false,
+        "private-packagist": {
+            "type": "composer",
+            "url": "https://repo.packagist.com/glocurrency/"
+        }
+    }
 }
