@@ -1,6 +1,6 @@
 <?php
 
-namespace Tests\Feature\Commands\GlobusBank;
+namespace GloCurrency\GlobusBank\Tests\Feature\Commands;
 
 use Illuminate\Support\Facades\Queue;
 use Illuminate\Support\Facades\Event;
