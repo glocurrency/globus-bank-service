@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.1](https://www.github.com/glocurrency/globus-bank-service/compare/v0.1.0...v0.1.1) (2022-02-06)
+
+
+### Bug Fixes
+
+* update mw blocks ([1fff827](https://www.github.com/glocurrency/globus-bank-service/commit/1fff82746ed6c27e4cf00d1edca784cd7b59c338))
+
 ## 0.1.0 (2022-02-06)
 
 
