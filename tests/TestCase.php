@@ -20,4 +20,23 @@ abstract class TestCase extends OrchestraTestCase
     {
         return [GlobusBankServiceProvider::class];
     }
+
+    /**
+     * Create the HTTP mock for API.
+     *
+     * @return array<\GuzzleHttp\Handler\MockHandler|\GuzzleHttp\HandlerStack> [$httpMock, $handlerStack]
+     */
+    protected function mockApiFor(string $class): array
+    {
+        $httpMock = new \GuzzleHttp\Handler\MockHandler();
+        $handlerStack = \GuzzleHttp\HandlerStack::create($httpMock);
+
+        $this->app->when($class)
+            ->needs(\GuzzleHttp\ClientInterface::class)
+            ->give(function () use ($handlerStack) {
+                return new \GuzzleHttp\Client(['handler' => $handlerStack]);
+            });
+
+        return [$httpMock, $handlerStack];
+    }
 }
