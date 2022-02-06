@@ -3,6 +3,7 @@
 namespace GloCurrency\GlobusBank;
 
 use Illuminate\Support\ServiceProvider;
+use GloCurrency\GlobusBank\Console\FetchTransactionsUpdateCommand;
 use GloCurrency\GlobusBank\Config;
 use BrokeYourBike\GlobusBank\Interfaces\ConfigInterface;
 
@@ -16,6 +17,7 @@ class GlobusBankServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerMigrations();
+        $this->registerPublishing();
         $this->registerCommands();
     }
 
@@ -90,6 +92,10 @@ class GlobusBankServiceProvider extends ServiceProvider
      */
     protected function registerCommands()
     {
-        if ($this->app->runningInConsole()) {}
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                FetchTransactionsUpdateCommand::class,
+            ]);
+        }
     }
 }
