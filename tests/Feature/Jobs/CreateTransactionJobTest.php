@@ -105,6 +105,58 @@ class CreateTransactionJobTest extends FeatureTestCase
     }
 
     /** @test */
+    public function it_will_throw_without_bank_code_in_transaction_recipient(): void
+    {
+        $sender = $this->getMockBuilder(MSenderInterface::class)->getMock();
+        $recipient = $this->getMockBuilder(MRecipientInterface::class)->getMock();
+        $recipient->method('getId')->willReturn($this->faker()->uuid());
+        $recipient->method('getBankCode')->willReturn(null);
+
+        $transaction = $this->getMockBuilder(MTransactionInterface::class)->getMock();
+        $transaction->method('getId')->willReturn('1234');
+        $transaction->method('getType')->willReturn(MTransactionTypeEnum::BANK);
+        $transaction->method('getStateCode')->willReturn(MTransactionStateCodeEnum::PROCESSING);
+        $transaction->method('getSender')->willReturn($sender);
+        $transaction->method('getRecipient')->willReturn($recipient);
+
+        $processingItem = $this->getMockBuilder(MProcessingItemInterface::class)->getMock();
+        $processingItem->method('getTransaction')->willReturn($transaction);
+
+        /** @var MRecipientInterface $recipient */
+        $this->expectExceptionMessage("`{$recipient->getId()}` has no `bank_code`");
+        $this->expectException(CreateTransactionException::class);
+
+        CreateTransactionJob::dispatchSync($processingItem);
+    }
+
+    /** @test */
+    public function it_will_throw_without_bank_account_in_transaction_recipient(): void
+    {
+        $sender = $this->getMockBuilder(MSenderInterface::class)->getMock();
+        $recipient = $this->getMockBuilder(MRecipientInterface::class)->getMock();
+        $recipient->method('getId')->willReturn($this->faker()->uuid());
+        $recipient->method('getBankCode')->willReturn($this->faker()->word());
+        $recipient->method('getBankAccount')->willReturn(null);
+
+        $transaction = $this->getMockBuilder(MTransactionInterface::class)->getMock();
+        $transaction->method('getId')->willReturn('1234');
+        $transaction->method('getType')->willReturn(MTransactionTypeEnum::BANK);
+        $transaction->method('getStateCode')->willReturn(MTransactionStateCodeEnum::PROCESSING);
+        $transaction->method('getSender')->willReturn($sender);
+        $transaction->method('getRecipient')->willReturn($recipient);
+
+        $processingItem = $this->getMockBuilder(MProcessingItemInterface::class)->getMock();
+        $processingItem->method('getTransaction')->willReturn($transaction);
+
+        /** @var MRecipientInterface $recipient */
+
+        $this->expectExceptionMessage("`{$recipient->getId()}` has no `bank_account`");
+        $this->expectException(CreateTransactionException::class);
+
+        CreateTransactionJob::dispatchSync($processingItem);
+    }
+
+    /** @test */
     public function it_can_create_transaction(): void
     {
         $sender = $this->getMockBuilder(MSenderInterface::class)->getMock();
