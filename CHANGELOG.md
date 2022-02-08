@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.2](https://www.github.com/glocurrency/globus-bank-service/compare/v0.1.1...v0.1.2) (2022-02-08)
+
+
+### Bug Fixes
+
+* use updated `glocurrency/middleware-blocks` ([5797928](https://www.github.com/glocurrency/globus-bank-service/commit/5797928b682b18cfd19fecdf36b3e36a4a93de82))
+
 ### [0.1.1](https://www.github.com/glocurrency/globus-bank-service/compare/v0.1.0...v0.1.1) (2022-02-06)
 
 
