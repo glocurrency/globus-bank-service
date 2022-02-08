@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.1.3](https://www.github.com/glocurrency/globus-bank-service/compare/v0.1.2...v0.1.3) (2022-02-08)
+
+
+### Bug Fixes
+
+* update api client ([7900ba9](https://www.github.com/glocurrency/globus-bank-service/commit/7900ba9f82b6363fdf725d04efe7863d23203ff5))
+
 ### [0.1.2](https://www.github.com/glocurrency/globus-bank-service/compare/v0.1.1...v0.1.2) (2022-02-08)
 
 
