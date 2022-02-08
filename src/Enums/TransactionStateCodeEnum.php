@@ -27,6 +27,7 @@ enum TransactionStateCodeEnum: string
             return match ($statusCode) {
                 PaymentStatusEnum::PENDING => self::PROCESSING,
                 PaymentStatusEnum::PROCESSING => self::PROCESSING,
+                PaymentStatusEnum::PROCESSING_SECOND_LEG => self::PROCESSING,
                 PaymentStatusEnum::SUCCESSFUL => self::PAID,
                 PaymentStatusEnum::FAILED => self::FAILED,
                 PaymentStatusEnum::REJECTED => self::FAILED,

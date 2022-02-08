@@ -13,7 +13,7 @@
     "require": {
         "php": "^8.1",
         "brokeyourbike/base-models": "^0.3.0",
-        "brokeyourbike/globus-bank-api-client": "^0.3.0",
+        "brokeyourbike/globus-bank-api-client": "^0.3.1",
         "brokeyourbike/has-source-model": "^2.0",
         "glocurrency/middleware-blocks": "^0.4.0",
         "illuminate/contracts": "^8.0|^9.0",
