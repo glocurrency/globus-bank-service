@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.2.0](https://www.github.com/glocurrency/globus-bank-service/compare/v0.1.3...v0.2.0) (2022-10-22)
+
+
+### ⚠ BREAKING CHANGES
+
+* remove private
+
+### Bug Fixes
+
+* remove private ([b3b9f6e](https://www.github.com/glocurrency/globus-bank-service/commit/b3b9f6e53a318f5b352758d8568f588440d6a3cb))
+
 ### [0.1.3](https://www.github.com/glocurrency/globus-bank-service/compare/v0.1.2...v0.1.3) (2022-02-08)
 
 
