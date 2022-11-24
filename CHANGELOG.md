@@ -1,5 +1,12 @@
 # Changelog
 
+### [0.2.1](https://www.github.com/glocurrency/globus-bank-service/compare/v0.2.0...v0.2.1) (2022-11-24)
+
+
+### Miscellaneous Chores
+
+* update description ([d90022b](https://www.github.com/glocurrency/globus-bank-service/commit/d90022ba2d2377b882a645dee8f45367209da150))
+
 ## [0.2.0](https://www.github.com/glocurrency/globus-bank-service/compare/v0.1.3...v0.2.0) (2022-10-22)
 
 
