@@ -36,7 +36,7 @@ class ConfigTest extends TestCase
     /** @test */
     public function it_can_return_values()
     {
-        $url = $this->faker->url;
+        $url = $this->faker->url();
         $username = $this->faker->userName();
         $password = $this->faker->password();
         $sourceAccount = $this->faker->numerify('######');
